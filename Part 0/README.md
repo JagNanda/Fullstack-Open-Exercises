@@ -1,4 +1,4 @@
-Exercise 0.4:
+## Exercise 0.4:
 
 title User Submits new note
 browser -> server : HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
@@ -15,7 +15,7 @@ browser -> server : HTTP GET https://fullstack-exampleapp.herokuapp.com/data.jso
 server -> browser: data.json
 note over browser: Browser displays note data
 
-Exercise 0.5:
+## Exercise 0.5:
 title User Navigates to SPA
 browser -> server : HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
 server --> browser: HTML file
@@ -31,7 +31,7 @@ server -> browser: data.json
 note over browser: Browser displays note data
 
 
-Exercise 0.6:
+## Exercise 0.6:
 title User Submits New Note SPA
 
 note over  browser: User submits form with new note as JSON data
