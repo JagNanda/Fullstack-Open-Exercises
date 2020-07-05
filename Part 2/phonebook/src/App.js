@@ -17,7 +17,7 @@ const App = () => {
       .then((response) => {
         setPersons(response.data);
       });
-  })
+  }, []);
 
   const handleName = (event) => {
     setNewName(event.target.value);
