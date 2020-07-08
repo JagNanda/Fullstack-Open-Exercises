@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PersonForm from "./PersonForm";
-import Filter from "./Filter";
-import Persons from "./Persons";
-import axios from 'axios';
+import PersonForm from "./Components/PersonForm";
+import Filter from "./Components/Filter";
+import Persons from "./Components/Persons";
+import personService from "./services/persons";
 
 const App = () => {
 
@@ -12,11 +12,11 @@ const App = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/persons")
-      .then((response) => {
-        setPersons(response.data);
-      });
+
+      personService.getAll()
+        .then((resData) => {
+          setPersons(resData);
+        });
   }, []);
 
   const handleName = (event) => {
@@ -52,6 +52,7 @@ const App = () => {
       <Persons
         persons={persons}
         search={search}
+        setPersons={setPersons}
       />
     </div>
   );
