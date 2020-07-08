@@ -15,7 +15,12 @@ const PersonForm = (props) => {
                     props.setPersons(props.persons.concat(resData));
                 });
             props.setNewName("");
-            props.setNewNumber("");         
+            props.setNewNumber(""); 
+            props.setStatusMessage(`Added ${newPerson.name}`);
+            props.setMessageStatus("success");
+            setTimeout(() => {
+                props.setStatusMessage(null)
+            }, 5000);        
         }
         //if name already exists, ask user if they want to replace the number
         else {
@@ -24,7 +29,11 @@ const PersonForm = (props) => {
                     .editPerson(existingPerson[0].id, newPerson)
                     .then(editedPerson => {
                         props.setPersons(props.persons.map(p => p.id === editedPerson.id ? editedPerson : p));
-                    });
+                    })
+                    .catch((error) => {
+                        props.setStatusMessage(`Information of ${props.newName} has already been deleted from the server`);
+                        props.setMessageStatus("failed");
+                    })
             }
         }
     }

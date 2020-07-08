@@ -3,6 +3,7 @@ import PersonForm from "./Components/PersonForm";
 import Filter from "./Components/Filter";
 import Persons from "./Components/Persons";
 import personService from "./services/persons";
+import Notification from "./Components/Notification";
 
 const App = () => {
 
@@ -10,6 +11,8 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
+  const [statusMessage, setStatusMessage] = useState(null);
+  const [messageStatus, setMessageStatus] = useState("");
 
   useEffect(() => {
 
@@ -34,6 +37,10 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification 
+        statusMessage={statusMessage}
+        messageStatus={messageStatus}  
+      />
       <PersonForm
         newName={newName}
         newNumber={newNumber}
@@ -43,6 +50,8 @@ const App = () => {
         setNewName={setNewName}
         setNewNumber={setNewNumber}
         setPersons={setPersons}
+        setStatusMessage={setStatusMessage}
+        setMessageStatus={setMessageStatus}
       />
       <h2>Numbers</h2>
       <Filter
@@ -54,6 +63,7 @@ const App = () => {
         search={search}
         setPersons={setPersons}
       />
+      
     </div>
   );
 }
